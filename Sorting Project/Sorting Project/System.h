@@ -1,13 +1,13 @@
 #pragma once
 #include "basics.h"
 
-
 class System
 {
 
-
     //-----------------------------------------------------------------------------
-public: // virtual methods
+public:
+    virtual ~System() = default;
+    // virtual methods
 //-----------------------------------------------------------------------------
 
     /// @brief  Gets called once when this System is added to the Engine

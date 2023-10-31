@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <iostream>
-
+#include "GraphicsSystem.h"
 
 int main()
 {
@@ -9,3 +9,4 @@ int main()
 
 	return 0;
 }
+	

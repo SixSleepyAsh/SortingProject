@@ -2,6 +2,7 @@
 #include "InputSystem.h"
 #include <map>
 #include "glfw3.h"
+#include "GraphicsSystem.h"
 
 /// @brief fixed update for input, must be called
 void InputSystem::OnFixedUpdate()
@@ -9,7 +10,7 @@ void InputSystem::OnFixedUpdate()
     for (auto& key : m_KeyStates)
     {
         bool old = key.second[0];
-        key.second[0] = glfwGetKey(/*Get WindowHandle*/,
+        key.second[0] = glfwGetKey(GraphicsSystem::GetInstance()->getWindow(),
             key.first);
 
         if (key.second[0] == true && old == false)
@@ -33,7 +34,7 @@ void InputSystem::OnFixedUpdate()
     for (auto& key : m_MouseStates)
     {
         bool old = key.second[0];
-        key.second[0] = glfwGetMouseButton(/*Get WindowHandle*/,
+        key.second[0] = glfwGetMouseButton(GraphicsSystem::GetInstance()->getWindow(),
             key.first);
 
         if (key.second[0] == true && old == false)

@@ -78,6 +78,10 @@ public:
     // Prevent copying
     InputSystem(InputSystem& other) = delete;
     void operator=(const InputSystem&) = delete;
+
+	void OnInit() override;
+    void OnUpdate(float dt) override;
+    void OnExit() override;
 };
 
 /// @brief shortens input get instance to simply input

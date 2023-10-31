@@ -83,7 +83,7 @@ void Engine::update()
 
     m_PreviousTime = currentTime;
 
-    GLFWwindow* window /*Get WindowHandle*/;
+    /*GLFWwindow* window /*Get WindowHandle#1#;
 
     // ensure viewport size matches window size
     int display_w, display_h;
@@ -95,7 +95,7 @@ void Engine::update()
     glClear(GL_COLOR_BUFFER_BIT);
 
 
-    glfwPollEvents();
+    glfwPollEvents();*/
 
 }
 
