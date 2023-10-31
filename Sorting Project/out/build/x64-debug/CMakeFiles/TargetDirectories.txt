@@ -1,0 +1,5 @@
+C:/Users/nekoy/Desktop/Personal Project/SortingProject/Sorting Project/out/build/x64-debug/CMakeFiles/edit_cache.dir
+C:/Users/nekoy/Desktop/Personal Project/SortingProject/Sorting Project/out/build/x64-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/nekoy/Desktop/Personal Project/SortingProject/Sorting Project/out/build/x64-debug/Sorting Project/CMakeFiles/CMakeTarget.dir
+C:/Users/nekoy/Desktop/Personal Project/SortingProject/Sorting Project/out/build/x64-debug/Sorting Project/CMakeFiles/edit_cache.dir
+C:/Users/nekoy/Desktop/Personal Project/SortingProject/Sorting Project/out/build/x64-debug/Sorting Project/CMakeFiles/rebuild_cache.dir
