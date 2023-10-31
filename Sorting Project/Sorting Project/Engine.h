@@ -110,7 +110,7 @@ public: // singleton stuff
 };
 
 
-__inline Engine* GameEngine()
+__inline Engine* SortingEngine()
 {
     return Engine::GetInstance();
 }
