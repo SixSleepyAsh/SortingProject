@@ -64,7 +64,6 @@ private: /// Methods
 ///---------------------------------------------------------------------
 private: /// Singleton Stuff
 ///---------------------------------------------------------------------
- 	static DebugSystem* s_Instance;
 
 	DebugSystem() : System("Debug") {}
 };

@@ -101,14 +101,16 @@ void DebugSystem::OnExit()
     ImGui::DestroyContext();
 }
 
+static DebugSystem* DEBUG_INSTANCE;
+
 DebugSystem* DebugSystem::GetInstance()
 {
-	if (s_Instance == nullptr)
+	if (DEBUG_INSTANCE == nullptr)
 	{
-		s_Instance = new DebugSystem();
+		DEBUG_INSTANCE = new DebugSystem();
 	}
 
-	return s_Instance;
+	return DEBUG_INSTANCE;
 }
 
 void DebugSystem::ImguiStartFrame()
