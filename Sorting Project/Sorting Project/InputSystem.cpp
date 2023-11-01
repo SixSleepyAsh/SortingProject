@@ -1,7 +1,8 @@
 
 #include "InputSystem.h"
 #include <map>
-#include "glfw3.h"
+#include <vulkan/vulkan.hpp>
+#include <glfw/glfw3.h>
 #include "GraphicsSystem.h"
 
 /// @brief fixed update for input, must be called

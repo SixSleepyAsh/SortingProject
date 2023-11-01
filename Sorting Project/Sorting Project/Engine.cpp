@@ -1,4 +1,6 @@
 #include "Engine.h"
+
+#include "GraphicsSystem.h"
 #include "InputSystem.h"
 #include "basics.h"
 

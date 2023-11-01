@@ -11,7 +11,11 @@ class GraphicsSystem : public System
 	GLFWwindow* m_window{};
 	size_t m_selectedQueue{};
 	vk::UniqueDevice m_logicalDevice{};
-
+	vk::Queue m_queue;
+	vk::UniqueSurfaceKHR m_surface;
+	vk::SurfaceFormatKHR m_surfaceFormat;
+	vk::UniqueSwapchainKHR m_swapchain;
+	std::vector<vk::UniqueImageView> m_imageViews;
 
 public:
 	GraphicsSystem() : System("Graphics System") {}
