@@ -7,6 +7,7 @@ int main()
 {
 	Engine*	engine = SortingEngine();
 
+	engine->AddSystem(GraphicsSystem::GetInstance());
 	engine->Run();
 
 	return 0;

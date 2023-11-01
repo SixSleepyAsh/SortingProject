@@ -22,6 +22,11 @@ void Engine::Close()
    m_ShouldExit = true;
 }
 
+void Engine::AddSystem(System* system)
+{
+    m_Systems.emplace_back(system);
+}
+
 float Engine::GetFixedFrameDuration() const
 {
 	return m_FixedFrameDuration;
@@ -58,7 +63,7 @@ void Engine::init()
     }
 
     // Set the clear color (background color)
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    // glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
 
 void Engine::update()
@@ -140,14 +145,16 @@ Engine::Engine() :
     m_PreviousTime(0.0)
 {}
 
+Engine* ENGINE = {};
+
 /// @brief  gets the singleton instance of the Engine
 /// @return the singleton instance of the Engine
 Engine* Engine::GetInstance()
 {
-    if (s_Instance == nullptr)
+    if (ENGINE == nullptr)
     {
-		s_Instance = new Engine();
+		ENGINE = new Engine();
 	}
 
-	return s_Instance;
+	return ENGINE;
 }

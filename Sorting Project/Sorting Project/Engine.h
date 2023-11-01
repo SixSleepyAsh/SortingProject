@@ -89,7 +89,7 @@ private: // singleton stuff
 //-----------------------------------------------------------------------------
 
     /// @brief  The singleton instance of the Engine
-    static Engine * s_Instance;
+    //static Engine * s_Instance;
 
     /// @brief  Constructs a new Engine
     Engine();
@@ -108,7 +108,6 @@ public: // singleton stuff
     void operator=( const Engine& ) = delete;
 
 };
-
 
 __inline Engine* SortingEngine()
 {

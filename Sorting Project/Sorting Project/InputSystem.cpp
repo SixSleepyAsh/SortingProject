@@ -121,6 +121,18 @@ bool InputSystem::GetMouseReleased(int glfw_mouse_button)
     return m_MouseStates[glfw_mouse_button][2];
 }
 
+void InputSystem::OnInit()
+{
+}
+
+void InputSystem::OnUpdate(float dt)
+{
+}
+
+void InputSystem::OnExit()
+{
+}
+
 //-----------------------------------------------------------------------------
 // singleton stuff
 //-----------------------------------------------------------------------------

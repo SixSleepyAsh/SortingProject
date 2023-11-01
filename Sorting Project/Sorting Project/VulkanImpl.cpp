@@ -26,7 +26,7 @@ std::pair<vk::PhysicalDevice, size_t> VKImpl::SelectVulkanDevice(vk::Instance& i
 {
 	unsigned count;
 	instance.enumeratePhysicalDevices(&count, nullptr);
-	std::vector<vk::PhysicalDevice> device_properties;
+	std::vector<vk::PhysicalDevice> device_properties{count};
 	instance.enumeratePhysicalDevices(&count, &device_properties[0]);
 
 	if (device_properties.size() <= 0)
@@ -34,26 +34,32 @@ std::pair<vk::PhysicalDevice, size_t> VKImpl::SelectVulkanDevice(vk::Instance& i
 
 	// TODO: better device selection
 
-	std::vector<vk::QueueFamilyProperties>  family_properties = 
-		device_properties[DEFAULT_DEVICE_INDEX].getQueueFamilyProperties();
-
-	vk::PhysicalDevice device;
-	int i = 0;
-	auto family_it = family_properties.begin();
-	while(family_it != family_properties.end())
+	auto deviceIt = device_properties.begin();
+	while (deviceIt != device_properties.end())
 	{
-		if (glfwGetPhysicalDevicePresentationSupport(instance,
-			device_properties[DEFAULT_DEVICE_INDEX], i) &&
-			family_it->queueFlags & vk::QueueFlagBits::eGraphics)
+		std::vector<vk::QueueFamilyProperties>  family_properties =
+			device_properties[DEFAULT_DEVICE_INDEX].getQueueFamilyProperties();
+
+		vk::PhysicalDevice device;
+		int familyIndex = 0;
+		auto family_it = family_properties.begin();
+		while (family_it != family_properties.end())
 		{
-			
+			if (glfwGetPhysicalDevicePresentationSupport(instance,
+				device_properties[DEFAULT_DEVICE_INDEX], familyIndex) &&
+				family_it->queueFlags & vk::QueueFlagBits::eGraphics)
+			{
+				break;
+			}
+
+			family_it++;
+			familyIndex++;
 		}
+		if (family_it == family_properties.end())
+			continue;
 
-		i++;
+		return { device_properties[0], familyIndex };
 	}
-
-
-	return { device_properties[0], i };
 }
 
 vk::UniqueDevice VKImpl::createLogicalDevice(const vk::UniqueInstance& instance, vk::PhysicalDevice physical_device,

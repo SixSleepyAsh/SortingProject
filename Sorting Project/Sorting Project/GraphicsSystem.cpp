@@ -2,6 +2,8 @@
 
 #include "VulkanImpl.h"
 
+GraphicsSystem* GRAPHICS_SYSTEM = {};
+
 GraphicsSystem* GraphicsSystem::GetInstance()
 {
 	if (GRAPHICS_SYSTEM == nullptr)
@@ -16,14 +18,14 @@ GLFWwindow* GraphicsSystem::getWindow()
 
 void GraphicsSystem::OnInit()
 {
-	if (!glfwVulkanSupported())
-	{
-		throw std::runtime_error("Vulkan is not supported");
-	}
-
 	if(!glfwInit())
 	{
 		throw std::runtime_error("GLFW failed to initialize");
+	}
+
+	if (!glfwVulkanSupported())
+	{
+		throw std::runtime_error("Vulkan is not supported");
 	}
 
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -39,6 +41,14 @@ void GraphicsSystem::OnInit()
 	m_selectedQueue = physDevicePair.second;
 	
 	m_logicalDevice = VKImpl::createLogicalDevice(m_instance, m_physDevice, m_selectedQueue);
+}
+
+void GraphicsSystem::OnFixedUpdate()
+{
+}
+
+void GraphicsSystem::OnUpdate(float dt)
+{
 }
 
 void GraphicsSystem::OnExit()

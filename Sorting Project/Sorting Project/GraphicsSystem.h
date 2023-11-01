@@ -3,6 +3,7 @@
 #include <vulkan/vulkan.hpp>
 #include <glfw/glfw3.h>
 
+
 class GraphicsSystem : public System
 {
 	vk::UniqueInstance m_instance{};
@@ -11,7 +12,6 @@ class GraphicsSystem : public System
 	size_t m_selectedQueue{};
 	vk::UniqueDevice m_logicalDevice{};
 
-	static GraphicsSystem* GRAPHICS_SYSTEM;
 
 public:
 	GraphicsSystem() : System("Graphics System") {}
@@ -25,4 +25,3 @@ public:
 	void OnUpdate(float dt) override;
 	void OnExit() override;;
 };
-
