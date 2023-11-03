@@ -16,9 +16,27 @@ class GraphicsSystem : public System
 	vk::SurfaceFormatKHR m_surfaceFormat;
 	vk::UniqueSwapchainKHR m_swapchain;
 	std::vector<vk::UniqueImageView> m_imageViews;
+	vk::UniqueDescriptorPool m_descriptorPool{};
+	vk::CommandBuffer m_commandBuffer{};
+	vk::UniqueRenderPass m_renderPass{};
+	uint32_t m_imageCount{};
+
+	GraphicsSystem() : System("Graphics System") {}
 
 public:
-	GraphicsSystem() : System("Graphics System") {}
+	
+	vk::Instance GetVulkanInstance() const { return m_instance.get(); }
+	vk::PhysicalDevice GetPhysicalDevice() const { return m_physDevice; }
+	vk::Device GetLogicalDevice() const { return m_logicalDevice.get(); }
+	vk::Queue GetQueue() const { return m_queue; }
+	uint32_t GetQueueFamilyIndex() const { return m_selectedQueue; }
+	vk::DescriptorPool GetDescriptorPool() const { return m_descriptorPool.get(); }
+	vk::CommandBuffer GetCommandBuffer() const { return m_commandBuffer; } 
+	vk::RenderPass GetRenderPass() const { return m_renderPass.get(); }
+	uint32_t GetImageCount() const { return m_imageCount; }
+
+
+public:
 
 	static GraphicsSystem* GetInstance();
 
@@ -29,3 +47,5 @@ public:
 	void OnUpdate(float dt) override;
 	void OnExit() override;;
 };
+
+__inline GraphicsSystem* Graphics() { return GraphicsSystem::GetInstance(); }

@@ -9,8 +9,8 @@
 #include "System.h"
 #include <vector>
 #include "imgui/imgui.h"
-#include <imgui/imgui_impl_vulkan.h>
 #include <imgui/imgui_impl_glfw.h>
+#include <imgui/imgui_impl_vulkan.h>
 #include <iostream>
 #include <sstream>
 #include <set>
@@ -50,7 +50,7 @@ private: /// Members
 	/// @brief The GLFW window handle
 	GLFWwindow* _window;
 
-	
+	static DebugSystem* s_Instance;
 
 ///---------------------------------------------------------------------
 private: /// Methods
@@ -65,7 +65,7 @@ private: /// Methods
 private: /// Singleton Stuff
 ///---------------------------------------------------------------------
 
-	DebugSystem() : System("Debug") {}
+	DebugSystem();
 };
 
 /// @brief shorthand for getting the DebugSystem
